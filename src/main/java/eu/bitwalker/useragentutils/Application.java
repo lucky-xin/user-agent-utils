@@ -46,7 +46,9 @@ package eu.bitwalker.useragentutils;
  */
 
 public enum Application {
-
+	/**
+	 *
+	 */
 	HOTMAIL(Manufacturer.MICROSOFT, 1, "Windows Live Hotmail", 
 			new String[] { "mail.live.com", "hotmail.msn" }, ApplicationType.WEBMAIL), 
 	GMAIL( Manufacturer.GOOGLE, 5, "Gmail",
@@ -84,8 +86,8 @@ public enum Application {
 	private final ApplicationType applicationType;
 	private final Manufacturer manufacturer;
 
-    private Application(Manufacturer manufacturer, int versionId, String name,
-        String[] aliases, ApplicationType applicationType) {
+    Application(Manufacturer manufacturer, int versionId, String name,
+                String[] aliases, ApplicationType applicationType) {
         this.id = (short) ((manufacturer.getId() << 8) + (byte) versionId);
         this.name = name;
         this.aliases = Utils.toLowerCase(aliases);
@@ -153,8 +155,9 @@ public enum Application {
 	 */
 	public static Application valueOf(short id) {
 		for (Application application : Application.values()) {
-			if (application.getId() == id)
+			if (application.getId() == id) {
 				return application;
+			}
 		}
 
 		// same behavior as standard valueOf(string) method

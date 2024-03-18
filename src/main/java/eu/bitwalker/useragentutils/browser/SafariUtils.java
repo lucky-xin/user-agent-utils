@@ -1,10 +1,10 @@
 package eu.bitwalker.useragentutils.browser;
 
+import eu.bitwalker.useragentutils.Version;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import eu.bitwalker.useragentutils.Version;
 
 /**
  * There are 2 types of user agent strings that present Safari: one that contains fragment {@code Version/1.2.3} from where the version of
@@ -25,7 +25,7 @@ import eu.bitwalker.useragentutils.Version;
  */
 // https://en.wikipedia.org/wiki/Safari_version_history
 public class SafariUtils {
-	private static final String[][] webKitToSafariVersion = new String[][] {
+	private static final String[][] WEB_KIT_TO_SAFARI_VERSION = new String[][]{
 		{"48", "0.8"},
 		{"73", "0.9"},
 		{"85", "1.0"},
@@ -174,8 +174,8 @@ public class SafariUtils {
 		
 		{"526.12.2", "4.0"},
 		{"528.1.1", "4.0"},
-
-		{"526.11.2", "4.0"}, // actually 4.0 beta
+			// actually 4.0 beta
+			{"526.11.2", "4.0"},
 		// 4.0 and 4.0 beta but since it is the same version we do not distinguish between 4.0 and 4.0 beta
 		{"528.16", "4.0"}, 
 		{"528.17", "4.0"},
@@ -186,11 +186,11 @@ public class SafariUtils {
 		{"531.22.7", "4.0.5"},
 		{"534.50", "5.1"},
 	};
-	private static final Map<String, Version> safariVersions;
+	private static final Map<String, Version> SAFARI_VERSIONS;
 	
 	static {
-		Map<String, Version> versions = new HashMap<String, Version>();
-		for (String[] pair : webKitToSafariVersion) {
+		Map<String, Version> versions = new HashMap<>();
+		for (String[] pair : WEB_KIT_TO_SAFARI_VERSION) {
 			String webKitVersion = pair[0];
 			String browserVersion = pair[1];
 			String[] parts = browserVersion.split("\\.");
@@ -199,10 +199,10 @@ public class SafariUtils {
 			Version version = new Version(browserVersion, majorVersion, minorVersion);
 			versions.put(webKitVersion, version);
 		}
-		safariVersions = Collections.unmodifiableMap(versions);
+		SAFARI_VERSIONS = Collections.unmodifiableMap(versions);
 	}
 
 	public static Map<String, Version> getWebKitToSafariVersion() {
-		return safariVersions;
+		return SAFARI_VERSIONS;
 	}
 }

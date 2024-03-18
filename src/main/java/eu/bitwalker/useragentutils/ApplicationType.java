@@ -50,7 +50,7 @@ public enum ApplicationType {
 	WEBMAIL("Webmail client"),
 	UNKNOWN("unknown");
 	
-	private String name;
+	private final String name;
 	
 	private ApplicationType(String name) {
 		this.name = name;

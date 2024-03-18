@@ -73,9 +73,9 @@ public enum DeviceType {
 	 */	
 	UNKNOWN("Unknown");
 	
-	String name;
+	final String name;
 	
-	private DeviceType(String name) {
+	DeviceType(String name) {
 		this.name = name;
 	}
 	

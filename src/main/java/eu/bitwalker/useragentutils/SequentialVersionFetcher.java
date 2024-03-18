@@ -11,9 +11,7 @@ public class SequentialVersionFetcher implements VersionFetcher {
 	public SequentialVersionFetcher(VersionFetcher first, VersionFetcher... others) {
 		fetchers = new VersionFetcher[others.length + 1];
 		fetchers[0] = first;
-		for (int i = 0; i < others.length; i++) {
-			fetchers[i+1] = others[i]; 
-		}
+        System.arraycopy(others, 0, fetchers, 1, others.length);
 	}
 
 	@Override
